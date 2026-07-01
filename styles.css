@@ -240,7 +240,7 @@ p {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
+  grid-template-columns: 0.95fr 1.05fr;
   gap: clamp(1.2rem, 3vw, 3rem);
   align-items: center;
 }
@@ -259,12 +259,87 @@ p {
 
 .hero-image img {
   box-shadow: var(--shadow);
+  width: 100%;
+  min-height: clamp(320px, 42vw, 520px);
+  object-fit: cover;
 }
 
 .split-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.2rem;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "content visual"
+    "info visual";
+  gap: 1.2rem;
+  align-items: stretch;
+}
+
+.about-card {
+  grid-area: content;
+}
+
+.about-info {
+  grid-area: info;
+}
+
+.about-visual {
+  grid-area: visual;
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  min-height: 100%;
+}
+
+.about-visual img {
+  width: 100%;
+  height: 100%;
+  min-height: 440px;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.about-stat {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  background: rgba(36, 21, 47, 0.8);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 14px;
+  padding: 0.75rem 0.95rem;
+  backdrop-filter: blur(4px);
+}
+
+.about-stat strong {
+  font-family: "Baloo 2", sans-serif;
+  font-size: 1.08rem;
+}
+
+.about-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 1rem;
+}
+
+.about-chips span {
+  background: linear-gradient(160deg, rgba(0, 185, 174, 0.14), rgba(255, 183, 3, 0.2));
+  border: 1px solid rgba(47, 29, 58, 0.1);
+  border-radius: 999px;
+  padding: 0.35rem 0.75rem;
+  font-weight: 700;
+  font-size: 0.88rem;
 }
 
 .about-card,
@@ -440,6 +515,18 @@ p {
     grid-template-columns: 1fr 1fr;
   }
 
+  .about-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "content"
+      "visual"
+      "info";
+  }
+
+  .about-visual img {
+    min-height: 360px;
+  }
+
   .nav-toggle {
     display: inline-block;
     margin-left: auto;
@@ -481,6 +568,10 @@ p {
   .menu-grid,
   .reviews-grid {
     grid-template-columns: 1fr;
+  }
+
+  .about-visual img {
+    min-height: 300px;
   }
 
   .brand-text {
